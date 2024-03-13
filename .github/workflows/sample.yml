@@ -1,11 +1,25 @@
-name: sample
+name: Automate_Deploy_Test
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
 
 jobs:
-  set_env_var:
+  weekend_deployment_check:
     runs-on: ubuntu-latest
-
+    outputs:
+      day: ${{ steps.check_day.outputs.day }}
     steps:
-      - run: echo ${{vars.commit_sha}}
-      - run: ${{vars.commit_sha}}="sha"
+      - name: Check Day of the Week
+        id: check_day
+        run: |
+          echo $(date +%u)
+          echo "day=$(date +%u)" >> $GITHUB_OUTPUT
+
+  deploy_test:
+    runs-on: ubuntu-latest
+    needs: [weekend_deployment_check]
+    if: |
+      ${{ ( vars.FORCED_DEPLOYMENT_TO_PROD_AND_SC == true ) ||
+      ( needs.weekend_deployment_check.outputs.day < vars.PAUSE_DAY_OF_THE_WEEK ) }}
+    steps:
+      - run: echo "${{vars.FORCED_DEPLOYMENT_TO_PROD_AND_SC}} ${{needs.weekend_deployment_check.outputs.day}} ${{vars.PAUSE_DAY_OF_THE_WEEK}}"
