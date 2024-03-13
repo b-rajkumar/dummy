@@ -19,8 +19,6 @@ jobs:
   deploy_test:
     runs-on: ubuntu-latest
     needs: [weekend_deployment_check]
-    if: >
-      ${{ (vars.FORCED_DEPLOYMENT_TO_PROD_AND_SC == 'true') || 
-      (needs.weekend_deployment_check.outputs.day < vars.PAUSE_DAY_OF_THE_WEEK) }}
+    if: ${{ (vars.FORCED_DEPLOYMENT_TO_PROD_AND_SC == 'true') || (needs.weekend_deployment_check.outputs.day < vars.PAUSE_DAY_OF_THE_WEEK) }}
     steps:
       - run: echo "deployed"
