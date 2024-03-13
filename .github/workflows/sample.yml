@@ -24,7 +24,7 @@ jobs:
       (
       needs.weekend_deployment_check.outputs.day < vars.PAUSE_DAY_OF_THE_WEEK &&
       needs.weekend_deployment_check.outputs.time > '09:00' &&
-      needs.weekend_deployment_check.outputs.time < '13:30'
+      needs.weekend_deployment_check.outputs.time < '17:30'
       ))
     steps:
       - run: echo "deployed"
