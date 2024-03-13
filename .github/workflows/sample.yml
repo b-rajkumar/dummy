@@ -1,0 +1,11 @@
+name: sample
+
+on: workflow_dispatch
+
+jobs:
+  set_env_var:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo ${{vars.commit_sha}}
+      - run: ${{vars.commit_sha}}="sha"
