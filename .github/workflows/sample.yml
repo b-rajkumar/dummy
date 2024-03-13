@@ -24,4 +24,4 @@ jobs:
     #   needs.weekend_deployment_check.outputs.day < vars.PAUSE_DAY_OF_THE_WEEK )
     steps:
       - run: echo "deployed"
-      - run: echo ${{steps.check_day.outputs.time}}
+      - run: echo "day:${{steps.check_day.outputs.day}} time:${{steps.check_day.outputs.time}}"
