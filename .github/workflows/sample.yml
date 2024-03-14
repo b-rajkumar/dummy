@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check deployment
-        run: ./scripts/check_deployment.sh ${{vars.FORCED_DEPLOYMENT_TO_PROD_AND_SC}} ${{vars.PAUSE_DAY_OF_THE_WEEK}}
+        run: ./.github/workflows/scripts/check_deployment.sh ${{vars.FORCED_DEPLOYMENT_TO_PROD_AND_SC}} ${{vars.PAUSE_DAY_OF_THE_WEEK}}
 
   deploy_test:
     runs-on: ubuntu-latest
