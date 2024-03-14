@@ -7,6 +7,8 @@ jobs:
   weekend_deployment_check:
     runs-on: ubuntu-latest
     steps:
+      - name: checkoutRepo
+        uses: actions/checkout@v3
       - name: Check deployment
         run: ./.github/workflows/scripts/check_deployment.sh ${{vars.FORCED_DEPLOYMENT_TO_PROD_AND_SC}} ${{vars.PAUSE_DAY_OF_THE_WEEK}}
 
