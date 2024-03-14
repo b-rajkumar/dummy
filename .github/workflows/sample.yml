@@ -16,5 +16,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: [weekend_deployment_check]
     steps:
-      - run: echo "deployed"
-      - run: echo "day:${{needs.weekend_deployment_check.outputs.day}} time:${{needs.weekend_deployment_check.outputs.time}}"
+      - run: |
+          echo "deployed"
+          echo "day:${{needs.weekend_deployment_check.outputs.day}} time:${{needs.weekend_deployment_check.outputs.time}}"
+            - uses: actions/checkout@v1
+      - id: set_state_in_progress
+        name: Set deployment status to [in_progress]
+        uses: rsotnychenko/deployment-status-update@0.2.1
+        with:
+          run_id: ${{ github.run_id }}
+          status: pending
