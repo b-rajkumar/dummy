@@ -6,26 +6,13 @@ on:
 jobs:
   weekend_deployment_check:
     runs-on: ubuntu-latest
-    outputs:
-      day: ${{ steps.check_day.outputs.day }}
-      time: ${{ steps.check_day.outputs.time }}
     steps:
-      - name: Check Day of the Week
-        id: check_day
-        run: |
-          echo "day=$(date +%u)" >> $GITHUB_OUTPUT
-          echo "time=$(TZ="Asia/Kolkata" date +"%H:%M")" >> $GITHUB_OUTPUT
+      - name: Check deployment
+        run: ./scripts/check_deployment.sh ${{vars.FORCED_DEPLOYMENT_TO_PROD_AND_SC}} ${{vars.PAUSE_DAY_OF_THE_WEEK}}
 
   deploy_test:
     runs-on: ubuntu-latest
     needs: [weekend_deployment_check]
-    if: |
-      ( vars.FORCED_DEPLOYMENT_TO_PROD_AND_SC == 'true' ||
-      (
-      needs.weekend_deployment_check.outputs.day < vars.PAUSE_DAY_OF_THE_WEEK &&
-      needs.weekend_deployment_check.outputs.time > '09:00' &&
-      needs.weekend_deployment_check.outputs.time < '17:30'
-      ))
     steps:
       - run: echo "deployed"
       - run: echo "day:${{needs.weekend_deployment_check.outputs.day}} time:${{needs.weekend_deployment_check.outputs.time}}"
