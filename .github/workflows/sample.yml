@@ -5,14 +5,15 @@ on:
   workflow_dispatch:
 
 jobs:
+  checkoutRepo:
+    uses: actions/checkout@v3
+
   first-job:
     env:
       name: raj
       age: 20
     runs-on: ubuntu-latest
     steps:
-      - name: checkoutRepo
-        uses: actions/checkout@v3
       - name: add variable to env
         run: |
           echo "tests=16" >> $GITHUB_ENV
