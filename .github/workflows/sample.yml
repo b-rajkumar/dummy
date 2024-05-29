@@ -10,9 +10,11 @@ jobs:
       - name: checkoutRepo
         uses: actions/checkout@v3
       - name: add variable to env
-        run: export name=rajkumar
+        run: |
+          export name=rajkumar
+          echo ${name}
       - name: access variable from env
-        run: echo $name
+        run: echo ${env.name}
 
   second-job:
     runs-on: ubuntu-latest
