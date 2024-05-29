@@ -23,6 +23,7 @@ jobs:
         run: |
           echo $name
           echo $age
+          echo $tests
 
   second-job:
     runs-on: ubuntu-latest
