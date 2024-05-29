@@ -5,9 +5,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  checkoutRepo:
-    uses: actions/checkout@v3
-
   first-job:
     outputs:
       tests: ${{ steps.step1.outputs.tests }}
@@ -16,6 +13,8 @@ jobs:
       age: 20
     runs-on: ubuntu-latest
     steps:
+      - name: checkoutRepo
+        uses: actions/checkout@v3
       - name: add variable to env
         id: step1
         run: |
