@@ -14,7 +14,7 @@ jobs:
           export name=rajkumar
           echo ${name}
       - name: access variable from env
-        run: echo ${env.name}
+        run: echo ${name}
 
   second-job:
     runs-on: ubuntu-latest
