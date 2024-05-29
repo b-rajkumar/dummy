@@ -5,19 +5,20 @@ on:
 
 jobs:
   first-job:
+    env:
+      name: raj
     runs-on: ubuntu-latest
     steps:
       - name: checkoutRepo
         uses: actions/checkout@v3
       - name: add variable to env
         run: |
+          echo ${name}
           export name=rajkumar
           echo ${name}
-          env
       - name: access variable from env
         run: |
           echo ${name}
-          env
 
   second-job:
     runs-on: ubuntu-latest
