@@ -8,6 +8,7 @@ jobs:
   first-job:
     env:
       name: raj
+      age: 20
     runs-on: ubuntu-latest
     steps:
       - name: checkoutRepo
@@ -16,10 +17,11 @@ jobs:
         run: |
           echo ${{env.name}}
           echo "name=rajkumar" >> $GITHUB_ENV
-          echo $name
+          echo ${{env.name}}
       - name: access variable from env
         run: |
           echo $name
+          echo $age
 
   second-job:
     runs-on: ubuntu-latest
