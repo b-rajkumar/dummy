@@ -30,4 +30,4 @@ jobs:
     needs: [first-job]
     steps:
       - name: access variable from env
-        run: echo $name
+        run: echo ${{env.tests}}
