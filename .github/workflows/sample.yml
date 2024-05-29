@@ -18,15 +18,16 @@ jobs:
       - name: add variable to env
         id: step1
         run: |
-          echo "tests=16" >> $GITHUB_OUTPUT
+          echo "tests=16" >> $GITHUB_ENV
           echo ${{env.name}}
           echo "name=rajkumar" >> $GITHUB_ENV
           echo ${{env.name}} ${{env.tests}}
+
       - name: access variable from env
         run: |
           echo $name
           echo $age
-          echo $tests
+          echo "tests -> ${tests} $tests"
 
   second-job:
     runs-on: ubuntu-latest
