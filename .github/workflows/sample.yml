@@ -15,7 +15,7 @@ jobs:
       - name: add variable to env
         run: |
           echo ${{env.name}}
-          echo name=rajkumar  >> ${{env.name}}
+          echo "name=rajkumar" >> $GITHUB_ENV
           echo $name
       - name: access variable from env
         run: |
