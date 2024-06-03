@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print-ip
-        run: ipconfig getifaddr en0
+        run: ip add
 
   second-job:
     runs-on: ubuntu-latest
     steps:
       - name: print-ip
-        run: ipconfig getifaddr en0
+        run: ip add
