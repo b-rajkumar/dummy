@@ -13,6 +13,7 @@ jobs:
         run: ip add
 
   second-job:
+    environment: test
     runs-on: ubuntu-latest
     steps:
       - name: print-ip
