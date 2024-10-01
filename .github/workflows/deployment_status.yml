@@ -1,0 +1,12 @@
+name: deployment status
+
+on:
+  deployment_status:
+
+jobs:
+  print-deployment-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step-1
+        run: echo "triggered" 
+      
