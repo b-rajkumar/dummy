@@ -5,6 +5,7 @@ on:
 
 jobs:
   print-deployment-status:
+    environment: test
     runs-on: ubuntu-latest
     steps:
       - name: step-1
