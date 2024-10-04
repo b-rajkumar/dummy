@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: print-ip
         run: ip add
+      - name: payload
+        run: echo ${github.event}
 
   second-job:
     environment: test
