@@ -12,7 +12,7 @@ jobs:
       - name: print-ip
         run: ip add
       - name: payload
-        run: echo ${{github.event}} |  jq '@json'
+        run: echo ${{ toJSON(github.event) }}
 
   second-job:
     environment: test
