@@ -12,6 +12,7 @@ jobs:
         run: echo "job1"
 
   job2:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: step-1
