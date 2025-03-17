@@ -28,6 +28,7 @@ jobs:
 
   job4:
     runs-on: ubuntu-latest
+    if: success()
     needs: job3
     steps:
       - name: step-1
