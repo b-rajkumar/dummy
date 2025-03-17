@@ -21,7 +21,7 @@ jobs:
   job3:
     runs-on: ubuntu-latest
     needs: [ job1, job2 ]
-    if: always() && (github.needs.job2.conclusion == 'success' || github.needs.job2.conclusion == 'skipped')
+    if: always() && (needs.job2.result == 'success' || needs.job2.result == 'skipped')
     steps:
       - name: step-1
         run: echo "job3"
