@@ -2,8 +2,12 @@ name: wrapper
 on:
   workflow_call:
 
-
 jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step-1
+        run: echo "job1"
 
   job2:
     if: false
